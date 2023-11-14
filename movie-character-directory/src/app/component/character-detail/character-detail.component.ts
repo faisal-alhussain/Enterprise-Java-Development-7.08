@@ -23,9 +23,15 @@ export class CharacterDetailComponent implements OnInit {
   }
 
   onDeleteClick(): void {
+    console.log('Deleting character:', this.character);
     if (this.character && this.character._id) {
-      // Emit event to notify the parent (character-list) component
-      this.deleteCharacter.emit(this.character._id);
+      console.log('Character ID:', this.character._id);
+      this.http
+        .delete<any>(`https://ih-crud-api.herokuapp.com/characters/${this.character._id}`)
+        .subscribe((response) => {
+          console.log('Delete Response:', response);
+          this.router.navigate(['/']);
+        });
     }
   }
 }
