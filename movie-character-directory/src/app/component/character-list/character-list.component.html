@@ -1,0 +1,9 @@
+<!-- character-list.component.html -->
+<div>
+  <h2>Character List</h2>
+  <ul>
+    <li *ngFor="let character of characters" (click)="onCharacterClick(character._id)">
+      {{ character.name }}
+    </li>
+  </ul>
+</div>
